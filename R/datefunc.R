@@ -1,7 +1,7 @@
 library(httr)
 library(anytime)
 
-recall_api <- function(search = NULL, lang = NULL, cat = NULL, lim = NULL) {
+recall_date_api <- function(search = NULL, lang = NULL, cat = NULL, lim = NULL, datestart = NULL, dateend = NULL) {
   #path <- '/recall-alert-rappel-avis/api/search?search=peanuts&lang=en&cat=1&lim=5&off=0'
   if (!is.null(search)) {
     search1 <- paste('search=', search, sep = '')
@@ -32,13 +32,13 @@ recall_api <- function(search = NULL, lang = NULL, cat = NULL, lim = NULL) {
   print(path)
   url <- modify_url('https://healthycanadians.gc.ca/recall-alert-rappel-avis/api/', path = path)
   resp <- GET(url)
-
+  
   if (http_type(resp) != "application/json") {
     stop("API did not return json", call. = FALSE)
   }
-
+  
   parsed <- jsonlite::fromJSON(url)
-
+  
   if (http_error(resp)) {
     stop(
       sprintf(
@@ -49,12 +49,26 @@ recall_api <- function(search = NULL, lang = NULL, cat = NULL, lim = NULL) {
       call. = FALSE
     )
   }
-
+  
   parsed <- as.data.frame(parsed[1])
   names(parsed) <- gsub(x = names(parsed), pattern = ".*\\.", replacement = "")
   parsed$date_published <- anytime(parsed$date_published)
-
-  parsed
-
+  
+  #date stuff
+  is.POSIXct <- function(x) inherits(x, "POSIXct")
+  
+  datestart <- anytime(datestart)
+  if (is.POSIXct(datestart) == FALSE){
+    cat('datestart entered in incorrect format')
+  }
+  
+  dateend <- anytime(dateend)
+  if (is.POSIXct(dateend) == FALSE){
+    cat('dateend entered in incorrect format')
+  }
+  
+  parsed[parsed$date_published > datestart & parsed$date_published < dateend,]
+  
+  
 }
 
