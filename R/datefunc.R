@@ -32,13 +32,13 @@ recall_date_api <- function(search = NULL, lang = NULL, cat = NULL, lim = NULL, 
   print(path)
   url <- modify_url('https://healthycanadians.gc.ca/recall-alert-rappel-avis/api/', path = path)
   resp <- GET(url)
-  
+
   if (http_type(resp) != "application/json") {
     stop("API did not return json", call. = FALSE)
   }
-  
+
   parsed <- jsonlite::fromJSON(url)
-  
+
   if (http_error(resp)) {
     stop(
       sprintf(
@@ -49,26 +49,36 @@ recall_date_api <- function(search = NULL, lang = NULL, cat = NULL, lim = NULL, 
       call. = FALSE
     )
   }
-  
+
   parsed <- as.data.frame(parsed[1])
   names(parsed) <- gsub(x = names(parsed), pattern = ".*\\.", replacement = "")
   parsed$date_published <- anytime(parsed$date_published)
-  
+
   #date stuff
+  #NEED LOGIC TO INPUT DATE AS STRING
   is.POSIXct <- function(x) inherits(x, "POSIXct")
-  
-  datestart <- anytime(datestart)
-  if (is.POSIXct(datestart) == FALSE){
-    cat('datestart entered in incorrect format')
-  }
-  
-  dateend <- anytime(dateend)
-  if (is.POSIXct(dateend) == FALSE){
-    cat('dateend entered in incorrect format')
-  }
-  
+
+  datestart <- tryCatch({
+      anytime(datestart)
+    },
+    error = function(e){
+      message('datestart entered in incorrect format')
+      warning(e)
+    }
+  )
+
+  dateend <- tryCatch({
+      anytime(dateend)
+    },
+    error = function(e){
+      message('dateend entered in incorrect format')
+      warning(e)
+    }
+  )
+
+
   parsed[parsed$date_published > datestart & parsed$date_published < dateend,]
-  
-  
+
 }
 
+recall_date_api('costco', dateend = '12/1/2019', datestart = '12/1/2016', lim = 99999)
