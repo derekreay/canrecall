@@ -1,15 +1,18 @@
 Package: canrecall
-Title: What the Package Does (One Line, Title Case)
+Title: API wrapper for the Canadian Recalls and Safety Alerts API.
 Version: 0.0.0.9000
-Authors@R: 
-    person(given = "First",
-           family = "Last",
-           role = c("aut", "cre"),
-           email = "first.last@example.com",
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
+Authors@R: person("Alex", "Havers", email = "test@test.com", role = c("aut","cre"))
+Description: Wraps the recall and safety alerts information from
+	https://healthycanadians.gc.ca/connect-connectez/data-donnees/recall-alert-rappel-avis-eng.php.
+	Allows users to choose between the 15 most recent recalls, keyword search recalls within
+	a date range, and a multiple filter search.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
+Imports:
+    httr (>= 1.4.1),
+    jsonlite (>= 1.6),
+    anytime (>= 0.3.7)
 Suggests: 
     testthat (>= 2.1.0)
+RoxygenNote: 6.1.1
