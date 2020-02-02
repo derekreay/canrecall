@@ -5,7 +5,7 @@
 recall_api <- function(search = NULL, lang = NULL, cat = NULL, lim = NULL) {
   #handle errors on inputs
   if (!is.null(search)) {
-    search1 <- paste('search=', search, sep = '')
+    search <- paste('search=', search, sep = '')
   }
   if (!is.null(lang)) {
     if (lang %in% c('en', 'fr')) {
@@ -19,7 +19,7 @@ recall_api <- function(search = NULL, lang = NULL, cat = NULL, lim = NULL) {
     if (cat %in% c(1,2,3,4)) {
       cat <- paste('&cat=', cat, sep = '')
     } else {
-      warning("Only values of 1,2,3 for cat or category of recall are accepted, searching with cat set to NULL")
+      warning("Only values of 1,2,3 or 4 for cat or category of recall are accepted, searching with cat set to NULL")
       cat <- NULL
     }
 
@@ -34,7 +34,7 @@ recall_api <- function(search = NULL, lang = NULL, cat = NULL, lim = NULL) {
 
   }
   path1 <- '/recall-alert-rappel-avis/api/'
-  path <- paste(path1, 'search?', search1, lang, cat, lim, sep = '')
+  path <- paste(path1, 'search?', search, lang, cat, lim, sep = '')
 
   url <- modify_url('https://healthycanadians.gc.ca/recall-alert-rappel-avis/api/', path = path)
   response_recalldetail <- GET(url)
@@ -69,3 +69,4 @@ recall_api <- function(search = NULL, lang = NULL, cat = NULL, lim = NULL) {
   return(df_recalldetail[-7])
 
 }
+

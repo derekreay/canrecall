@@ -1,7 +1,7 @@
 recall_date_api <- function(search = NULL, lang = NULL, cat = NULL, datestart = NULL, dateend = NULL) {
   #handle errors on inputs
   if (!is.null(search)) {
-    search1 <- paste('search=', search, sep = '')
+    search <- paste('search=', search, sep = '')
   }
   if (!is.null(lang)) {
     if (lang %in% c('en', 'fr')) {
@@ -15,7 +15,7 @@ recall_date_api <- function(search = NULL, lang = NULL, cat = NULL, datestart = 
     if (cat %in% c(1,2,3,4)) {
       cat <- paste('&cat=', cat, sep = '')
     } else {
-      warning("Only values of 1,2,3 for cat or category of recall are accepted, searching with cat set to NULL")
+      warning("Only values of 1,2,3 or 4 for cat or category of recall are accepted, searching with cat set to NULL")
       cat <- NULL
     }
 
@@ -23,7 +23,7 @@ recall_date_api <- function(search = NULL, lang = NULL, cat = NULL, datestart = 
   lim <- paste('&lim=', 99999, sep = '')
 
   path1 <- '/recall-alert-rappel-avis/api/'
-  path <- paste(path1, 'search?', search1, lang, cat, lim, sep = '')
+  path <- paste(path1, 'search?', search, lang, cat, lim, sep = '')
 
   url <- modify_url('https://healthycanadians.gc.ca/recall-alert-rappel-avis/api/', path = path)
   response_recalldetail <- GET(url)
@@ -64,7 +64,7 @@ recall_date_api <- function(search = NULL, lang = NULL, cat = NULL, datestart = 
     message('datestart entered in incorrect format')
   } else {
     if (as.POSIXct(datestart) <= as.POSIXct(anytime('1/1/1974'))){
-      message(paste0('did you enter dateend incorrectly as ', dateend, '. No data exists before 1974'))
+      warning(paste('did you enter datestart incorrectly as ', datestart, '. No data exists before 1974'))
     }
   }
 
@@ -73,7 +73,7 @@ recall_date_api <- function(search = NULL, lang = NULL, cat = NULL, datestart = 
     warning('dateend entered in incorrect format')
   } else {
     if (as.POSIXct(dateend) <= as.POSIXct(anytime('1/1/1974'))){
-      warning(paste0('did you enter dateend incorrectly as ', dateend, '. No data exists before 1974'))
+      warning(paste('did you enter dateend incorrectly as ', dateend, '. No data exists before 1974'))
     }
   }
 
@@ -84,3 +84,5 @@ recall_date_api <- function(search = NULL, lang = NULL, cat = NULL, datestart = 
   return(df_recalldetail[-7])
 
 }
+jimmy <- recall_date_api(search = "lettuce", cat = 1, lang = 'en', datestart = '2017', dateend = '1911')
+
