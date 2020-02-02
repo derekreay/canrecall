@@ -1,7 +1,7 @@
 Package: canrecall
 Title: API wrapper for the Canadian Recalls and Safety Alerts API.
 Version: 0.0.0.9000
-Authors@R: person("Alex", "Havers", email = "test@test.com", role = c("aut","cre"))
+Authors: Alex Havers, Derek Reay, Bruno Santos
 Description: Wraps the recall and safety alerts information from
 	https://healthycanadians.gc.ca/connect-connectez/data-donnees/recall-alert-rappel-avis-eng.php.
 	Allows users to choose between the 15 most recent recalls, keyword search recalls within
@@ -9,10 +9,13 @@ Description: Wraps the recall and safety alerts information from
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
-Imports:
+Depends:
     httr (>= 1.4.1),
     jsonlite (>= 1.6),
     anytime (>= 0.3.7)
 Suggests: 
-    testthat (>= 2.1.0)
+    testthat (>= 2.1.0),
+    knitr,
+    rmarkdown
 RoxygenNote: 6.1.1
+VignetteBuilder: knitr

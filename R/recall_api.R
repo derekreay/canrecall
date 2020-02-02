@@ -1,6 +1,26 @@
+#' recall_api
+#'
+#' A function to return recall data from the Canadian Recalls and Safety Alerts API
+#'
+#' The response is a dataframe
+#'
+#' @param cat integer variable as 1 = FOOD, 2 = VEHICLES,
+#' 3 = HEALTH PRODUCTS, 4 = CONSUMER PRODUCTS
+#' @param lang string variable as 'en' = English, 'fr' = French,
+#' for response language
+#' @param lim integer variable to limit results to n
+#' @param search string variable to search the database for
+#'
 #' @import httr
 #' @import anytime
 #' @import jsonlite
+#'
+#' @export
+#'
+#' @examples
+#' recall_api('banana', 'en', 1, 10)
+#' ## will return 10 recall results for 'banana' in english
+#'
 
 recall_api <- function(search = NULL, lang = NULL, cat = NULL, lim = NULL) {
   #handle errors on inputs
@@ -70,3 +90,7 @@ recall_api <- function(search = NULL, lang = NULL, cat = NULL, lim = NULL) {
 
 }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> a84269a58ee88acbd77ddc3313ec18d648e13790

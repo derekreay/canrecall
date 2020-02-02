@@ -1,4 +1,29 @@
-recall_date_api <- function(search = NULL, lang = NULL, cat = NULL, datestart = NULL, dateend = NULL) {
+#' recall_api_date
+#'
+#' A function to return recall data from the Canadian Recalls and Safety Alerts API, parsed by date range
+#'dev
+#' The result is a dataframe
+#'
+#' @param cat integer variable as 1 = FOOD, 2 = VEHICLES,
+#' 3 = HEALTH PRODUCTS, 4 = CONSUMER PRODUCTS
+#' @param lang string variable as 'en' = English, 'fr' = French,
+#' for response language
+#' @param search string variable to search the database for
+#' @param datestart string variable to set earliest date in range
+#' @param dateend string ariable to set latest date in range
+#'
+#' @import httr
+#' @import anytime
+#' @import jsonlite
+#'
+#' @export
+#'
+#' @examples
+#' recall_api_date('banana', 'en', 1, '1/1/2019', '12/31/2019')
+#' ## will return all recall results for 'banana' in 2019 in english
+#'
+
+recall_api_date <- function(search = NULL, lang = NULL, cat = NULL, datestart = NULL, dateend = NULL) {
   #handle errors on inputs
   if (!is.null(search)) {
     search <- paste('search=', search, sep = '')
