@@ -86,7 +86,7 @@ recall_api_recent <- function(lang = NULL) {
 
 }
 
-xxx <- recall_api_recent(lang = 'es')
-View(xxx)
+#xxx <- recall_api_recent(lang = 'es')
+#View(xxx)
 
 
