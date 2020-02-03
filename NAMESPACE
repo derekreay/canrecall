@@ -2,6 +2,7 @@
 
 export(recall_api)
 export(recall_api_date)
+export(recall_api_recent)
 import(anytime)
 import(httr)
 import(jsonlite)

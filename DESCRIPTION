@@ -1,7 +1,19 @@
 Package: canrecall
 Title: API wrapper for the Canadian Recalls and Safety Alerts API.
 Version: 0.0.0.9000
-Authors: Alex Havers, Derek Reay, Bruno Santos
+Authors@R: 
+    c(person(given = "Alex",
+             family = "Havers",
+             role = "aut",
+             email = "test@test.com"),
+	person(given = "Derek",
+             family = "Reay",
+             role = c("aut", "cre"),
+             email = "test@test.com"),
+	person(given = "Bruno",
+             family = "Santos",
+             role = "aut",
+             email = "test@test.com"))
 Description: Wraps the recall and safety alerts information from
 	https://healthycanadians.gc.ca/connect-connectez/data-donnees/recall-alert-rappel-avis-eng.php.
 	Allows users to choose between the 15 most recent recalls, keyword search recalls within
