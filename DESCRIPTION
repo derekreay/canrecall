@@ -10,11 +10,11 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Depends:
-    httr (>= 1.4.1),
-    jsonlite (>= 1.6),
-    anytime (>= 0.3.7)
+    httr,
+    jsonlite,
+    anytime
 Suggests: 
-    testthat (>= 2.1.0),
+    testthat,
     knitr,
     rmarkdown
 RoxygenNote: 6.1.1
