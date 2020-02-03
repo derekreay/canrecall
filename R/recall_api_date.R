@@ -109,5 +109,4 @@ recall_api_date <- function(search = NULL, lang = NULL, cat = NULL, datestart = 
   return(df_recalldetail[-7])
 
 }
-jimmy <- recall_date_api(search = "lettuce", cat = 1, lang = 'en', datestart = '2017', dateend = '1911')
 
