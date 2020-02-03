@@ -90,7 +90,3 @@ recall_api <- function(search = NULL, lang = NULL, cat = NULL, lim = NULL) {
 
 }
 
-<<<<<<< HEAD
-=======
-
->>>>>>> a84269a58ee88acbd77ddc3313ec18d648e13790
