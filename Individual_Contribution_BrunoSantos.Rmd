@@ -1,0 +1,18 @@
+---
+title: "Bruno Santos Contribution"
+output: html_notebook
+---
+
+1: First, I did some research to find out which APIs we could choose from. After the research, two APIs were chosen: Kelowna API (http://opendata.kelowna.ca) and Twitter.
+
+2: The list of APIs was placed in conversation with the group and it was decided that the selected API would be Canadian Recalls and Safety Alerts.
+
+3: I studied about the chosen API and what would be the options that could be used in it.
+
+4: We held a meeting to decide what the roles of each of the group would be from then on.
+
+5: I was responsible for creating the R package and working with an API function.
+
+6: I did two functions: Recent Recalls and Recall Details, but we only kept one.
+
+7: We discussed the options that can be used in the functions and completion of the project.

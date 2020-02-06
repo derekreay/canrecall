@@ -1,0 +1,58 @@
+---
+title: "my-vignette"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{my-vignette}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(canrecall)
+```
+
+# canrecall is an API wrapper for the Canadian Recalls and Safety Alerts API.
+
+There are three main functions present in canrecall.
+
+### recall_api : used to parse recall data. The result is a dataframe
+
+There are 4 filters:
+
+  category: an integer variable where 1 = FOOD, 2 = VEHICLES, 3 = HEALTH PRODUCTS, 4 = CONSUMER PRODUCTS
+  lang: a string variable as 'en' = English, 'fr' = French for response language
+  lim: an integer variable to limit results to n
+  search: a string variable to search the database for
+  
+So, for the most recent 10 results for peanuts, in english, the function would look like:
+
+recall_api('peanuts', 'en', 1, 10)
+
+### recall_api_date : similar to recall_api, but meant to parse recall searches by date. The result is a dataframe
+
+Here, there are 5 filters:
+
+  category: an integer variable where 1 = FOOD, 2 = VEHICLES, 3 = HEALTH PRODUCTS, 4 = CONSUMER PRODUCTS
+  lang: a string variable as 'en' = English, 'fr' = French for response language
+  datestart: a string variable for the lower date bound of the search
+  dateend: a string variable for the upper date bound of the search
+  search: a string variable to search the database for
+
+So, to find recall data for peanuts, in english, in 2018, the function would look like:
+
+recall_api('peanuts', 'en, 1, '1/1/2018','12/31/2018')
+
+### recall_api_recent : regardless of fitler, retrieves the 15 most recent recalls.
+
+
+Documentation for the API can be found at https://healthycanadians.gc.ca/connect-connectez/data-donnees/recall-alert-rappel-avis-eng.php
+
+
+
