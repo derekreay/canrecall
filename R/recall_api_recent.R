@@ -1,7 +1,7 @@
 #' recall_api_recent
 #'
-#' A function to return recall data from the Canadian Recalls and Safety Alerts API, parsed by date range
-#'dev
+#' A function to return recent recall data from the Canadian Recalls and Safety Alerts API, Will
+#  return the last 15 in each category along with the 15 most recent accross all categories
 #' The result is a dataframe
 #'
 #' @param lang string variable as 'en' = English, 'fr' = French,
