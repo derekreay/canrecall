@@ -1,0 +1,32 @@
+---
+title: "R Notebook"
+author: "Alex Havers"
+output: html_notebook
+---
+
+**24th:**
+initial meeting and instantiated the repo. Discussed responsibilities and potential functions
+
+**26th:** started base wrapper writing and package creation. Read through usethis and package creation documentation, messed around on local machine. Going to suggest we do this as a group in class tomorrow
+
+**27th:** combined first API wrapper code with Derek's, created package including MIT license. Pushed to git repo. sent update to group over slack
+
+**28th:** added code of conduct
+
+**29th:** added date filter function and adjusted some code in the main filter function. Decided against wrapping recallId search due to potential complexity of table data (difficult to conceptualize how to vizualize this with one api call)
+
+**31st:** initiated test file directory
+
+**1st:** established vignette and function documentation. Messed around with description file details, roxygen2 giving me headaches around proper author input and package dependencies. Unclear if dependencies go only in the DESCRIPTION file, or also in roxygen2 comments in each function. For now, will put in both
+
+**3rd:** main day to finish build. added final version of recall_api_recent as well as adjusting travis and description file to make the thing work. roxygen2 indeed caused problems with the build, not sure why incorrect author formatting causes CI to fail but there you go!
+
+**4th:** built package from github, had to update my R to 3.6.2 to do so because of anytime dependency. Strange that install_github will fail a build based on a warning message. Don't like that at all.
+
+**5th:** added to vignette including code to plot data. planned presentation for tomorrow and wrote a script file to help.
+
+<br>
+
+**All commits to my branch can be found at:**
+
+    https://github.com/derekreay/canrecall/commits/alex

@@ -1,6 +1,7 @@
 ---
 title: "my-vignette"
 output: rmarkdown::html_vignette
+authors: "Alex Havers, Derek Reay, Bruno Santos"
 vignette: >
   %\VignetteIndexEntry{my-vignette}
   %\VignetteEngine{knitr::rmarkdown}
@@ -15,7 +16,7 @@ knitr::opts_chunk$set(
 ```
 
 ```{r setup}
-library(canrecall)
+
 ```
 
 Product recalls occur when a manufacturer requests the return of a defective/unsafe product from a consumer. These products can be potentially harmful to the consumer and leave the manufacturer legally liable for their harm.
@@ -82,7 +83,7 @@ This function only requires 1 parameter:
   
 The following code will return the 15 most recent recalls for all categories (75 total):
 
-    recall_api_recent('en')
+    r recall_api_recent('en')
 
 
 
