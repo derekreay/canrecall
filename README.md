@@ -10,8 +10,8 @@ API for Government of Canada recall based in R Language
 The aim of canrecall is to provide a wrapper in R for the recall API available on the healthycanadians.gc.ca website, and to add additional functionality such as searching by date of recall not present through the API.
 
 - `recall_api()` lets you search for recalls based on a variety of criteria
--`recall_api_date()` - enables you to filter recalls based on a variety of criteria including dates which was not originally available through the webpage
--`recall_api_recent()`- returns the last 15 recalls by date along with the last 15 recalls in the 4 categories.  
+- `recall_api_date()` - enables you to filter recalls based on a variety of criteria including dates which was not originally available through the webpage
+- `recall_api_recent()`- returns the last 15 recalls by date along with the last 15 recalls in the 4 categories.  
 
 ## Key features:
 
